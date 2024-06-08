@@ -39,10 +39,15 @@
     "@vscode/test-electron": "^2.4.0"
   },
   "configuration": {
-    "empty lines.emptyLinesCount": {
+    "empty lines.emptyLinesBetweenCode": {
+      "type": "number",
+      "default": 1,
+      "description": "Number of empty lines to be added in between code. Values < 0 disable this option."
+    },
+    "empty lines.emptyLinesBehindCode": {
       "type": "number",
       "default": 2,
-      "description": "Number of empty lines to be added at the end of a file."
+      "description": "Number of empty lines to be added at the end of a file. Values < 0 disable this option."
     }
   }
 }

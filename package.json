@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "empty-lines.emptyLines",
-        "title": "Hello World"
+        "command": "extension.addEmptyLines",
+        "title": "Empty lines extension"
       }
     ]
   },
@@ -28,26 +28,65 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.90.0",
+    "@types/assert": "^1.5.10",
     "@types/mocha": "^10.0.6",
-    "@types/node": "18.x",
+    "@types/node": "^18.19.34",
+    "@types/vscode": "^1.90.0",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@typescript-eslint/parser": "^7.11.0",
-    "eslint": "^8.57.0",
-    "typescript": "^5.4.5",
     "@vscode/test-cli": "^0.0.9",
-    "@vscode/test-electron": "^2.4.0"
+    "@vscode/test-electron": "^2.4.0",
+    "assert": "^2.1.0",
+    "eslint": "^8.57.0",
+    "os": "^0.1.2",
+    "test": "^3.3.0",
+    "typescript": "^5.4.5",
+    "vscode": "^1.1.34"
   },
   "configuration": {
-    "empty lines.emptyLinesBetweenCode": {
-      "type": "number",
-      "default": 1,
-      "description": "Number of empty lines to be added in between code. Values < 0 disable this option."
-    },
-    "empty lines.emptyLinesBehindCode": {
-      "type": "number",
-      "default": 2,
-      "description": "Number of empty lines to be added at the end of a file. Values < 0 disable this option."
+    "type": "object",
+    "title": "Empty Lines Configuration",
+    "properties": {
+      "empty-lines.enabled": {
+        "type": "boolean",
+        "default": true,
+        "description": "Enable or disable the extension."
+      },
+      "empty-lines.emptyLinesBetweenCode": {
+        "type": "number",
+        "default": 1,
+        "description": "Number of empty lines to be added in between code. Values < 0 disable this option."
+      },
+      "empty-lines.emptyLinesBehindCode": {
+        "type": "number",
+        "default": 2,
+        "description": "Number of empty lines to be added at the end of a file. Values < 0 disable this option."
+      },
+      "empty-lines.preserveFocusedLines": {
+        "type": "string",
+        "enum": [
+          "None",
+          "Empty",
+          "Block"
+        ],
+        "default": "Empty + after",
+        "description": "Options for preserving focused lines: None, Empty lines, or the entire code block."
+      },
+      "empty-lines.fixIndentation": {
+        "type": "boolean",
+        "default": "true",
+        "description": "Fix the indentation on empty lines, as the indentation on these lines can be removed by certain formatters."
+      },
+      "empty-lines.fixUnknownLanguageIndentation": {
+        "type": "boolean",
+        "default": "false",
+        "description": "Attempt to fix indentation of unknown languages, by assuming they use curly brackets."
+      }
     }
+  },
+  "dependencies": {
+    "lru-cache": "^10.2.2",
+    "minimatch": "^9.0.4",
+    "minimist": "^1.2.8"
   }
 }

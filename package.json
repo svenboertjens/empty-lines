@@ -3,7 +3,7 @@
   "displayName": "empty lines",
   "description": "Automatically add empty lines at the end of your files.",
   "version": "1.0.0",
-  "publisher": "Sven Boertjens",
+  "publisher": "SvenBoertjens",
   "engines": {
     "vscode": "^1.90.0"
   },

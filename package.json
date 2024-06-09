@@ -2,14 +2,17 @@
   "name": "empty-lines",
   "displayName": "empty lines",
   "description": "Automatically add empty lines at the end of your files.",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publisher": "Sven Boertjens",
   "engines": {
     "vscode": "^1.90.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:*"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -69,18 +72,13 @@
           "Empty",
           "Block"
         ],
-        "default": "Empty + after",
+        "default": "Block",
         "description": "Options for preserving focused lines: None, Empty lines, or the entire code block."
       },
-      "empty-lines.fixIndentation": {
-        "type": "boolean",
-        "default": "true",
-        "description": "Fix the indentation on empty lines, as the indentation on these lines can be removed by certain formatters."
-      },
-      "empty-lines.fixUnknownLanguageIndentation": {
+      "empty-lines.alwaysRelyOnBracketMethodToRead": {
         "type": "boolean",
         "default": "false",
-        "description": "Attempt to fix indentation of unknown languages, by assuming they use curly brackets."
+        "description": "Attempt to read over 'unknown' languages' code blocks by looking at curly brackets. Does not work with languages that don't use curly brackets."
       }
     }
   },

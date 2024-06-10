@@ -2,7 +2,7 @@
   "name": "empty-lines",
   "displayName": "empty lines",
   "description": "Keeps your code clean by ensuring there's not more than 1 line of code in between, and 2 lines of code at the end of your file (numbers are configurable). Does not format the currently focused code block.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "publisher": "SvenBoertjens",
   "icon": "icon.png",
   "engines": {

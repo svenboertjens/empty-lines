@@ -98,7 +98,7 @@
     "commands": [
       {
         "command": "extension.format",
-        "title": "Empty lines extension"
+        "title": "Empty lines: Format code"
       }
     ],
     "configuration": {
@@ -120,20 +120,10 @@
           "default": 2,
           "description": "Number of empty lines to be added at the end of a file. Values < 0 disable this option."
         },
-        "empty-lines.preserveFocusedLines": {
-          "type": "string",
-          "enum": [
-            "None",
-            "Empty",
-            "Block"
-          ],
-          "default": "Block",
-          "description": "Options for preserving focused lines: None, Empty lines, or the entire code block."
-        },
-        "empty-lines.alwaysRelyOnBracketMethodToRead": {
+        "empty-lines.preserveFocusedEmptyLines": {
           "type": "boolean",
-          "default": "false",
-          "description": "Attempt to read over 'unknown' languages' code blocks by looking at curly brackets. Does not work with languages that don't use curly brackets."
+          "default": true,
+          "description": "Enable or disable preserving empty lines when they're focused."
         }
       }
     }
@@ -144,4 +134,3 @@
     "minimist": "^1.2.8"
   }
 }
-

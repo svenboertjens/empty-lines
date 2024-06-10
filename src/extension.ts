@@ -15,7 +15,7 @@ const bracketPairLanguages: string[] = [
     "swift",
     "c",
     "cpp",
-    "cs",
+    "csharp",
     "css",
     "typescript",
     "json",
@@ -254,7 +254,7 @@ const focusStringToNumber: { [key: string]: number } = {
 let debounce = false;
 
 // The main function of the extension
-async function addEmptyLines() {
+async function main() {
     const config: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration("empty-lines");
     const isEnabled: boolean = config.get<boolean>("enabled", true);
     // Do nothing if not enabled or debouncing
@@ -347,15 +347,15 @@ async function addEmptyLines() {
 
 export function activate(context: vscode.ExtensionContext) {
     // Register command to trigger adding empty lines
-    let disposable: vscode.Disposable = vscode.commands.registerCommand('extension.addEmptyLines', () => {
-        addEmptyLines();
+    let disposable: vscode.Disposable = vscode.commands.registerCommand('extension.format', () => {
+        main();
     });
 
     context.subscriptions.push(disposable);
 
     // Call the main function when a document is saved
     vscode.workspace.onDidSaveTextDocument(() => {
-        addEmptyLines();
+        main();
     });
 }
 

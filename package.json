@@ -1,12 +1,24 @@
 {
   "name": "empty-lines",
   "displayName": "empty lines",
-  "description": "Automatically add empty lines at the end of your files.",
+  "description": "Keeps your code clean by ensuring there's not more than 1 line of code in between, and 2 lines of code at the end of your file (numbers are configurable). Does not format the currently focused code block.",
   "version": "1.0.0",
   "publisher": "SvenBoertjens",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.90.0"
   },
+  "keywords": [
+    "empty lines",
+    "line endings",
+    "whitespace",
+    "formatter",
+    "code style",
+    "cleanup",
+    "editor",
+    "code formatting",
+    "spacing"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/svenboertjens/empty-lines.git"
@@ -15,17 +27,49 @@
     "Other"
   ],
   "activationEvents": [
-    "onLanguage:*"
+    "onLanguage:javascript",
+    "onLanguage:go",
+    "onLanguage:kotlin",
+    "onLanguage:swift",
+    "onLanguage:c",
+    "onLanguage:cpp",
+    "onLanguage:csharp",
+    "onLanguage:css",
+    "onLanguage:typescript",
+    "onLanguage:json",
+    "onLanguage:rust",
+    "onLanguage:scala",
+    "onLanguage:php",
+    "onLanguage:ruby",
+    "onLanguage:perl",
+    "onLanguage:dart",
+    "onLanguage:r",
+    "onLanguage:haskell",
+    "onLanguage:groovy",
+    "onLanguage:julia",
+    "onLanguage:shellscript",
+    "onLanguage:plaintext",
+    "onLanguage:xml",
+    "onLanguage:yaml",
+    "onLanguage:html",
+    "onLanguage:lua",
+    "onLanguage:sql",
+    "onLanguage:batch",
+    "onLanguage:powershell",
+    "onLanguage:ini",
+    "onLanguage:makefile",
+    "onLanguage:matlab",
+    "onLanguage:objective-c",
+    "onLanguage:vb",
+    "onLanguage:coffeescript",
+    "onLanguage:clojure",
+    "onLanguage:erlang",
+    "onLanguage:elixir",
+    "onLanguage:fsharp",
+    "onLanguage:fortran",
+    "onLanguage:ocaml"
   ],
   "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "extension.addEmptyLines",
-        "title": "Empty lines extension"
-      }
-    ]
-  },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
@@ -50,39 +94,47 @@
     "typescript": "^5.4.5",
     "vscode": "^1.1.34"
   },
-  "configuration": {
-    "type": "object",
-    "title": "Empty Lines Configuration",
-    "properties": {
-      "empty-lines.enabled": {
-        "type": "boolean",
-        "default": true,
-        "description": "Enable or disable the extension."
-      },
-      "empty-lines.emptyLinesBetweenCode": {
-        "type": "number",
-        "default": 1,
-        "description": "Number of empty lines to be added in between code. Values < 0 disable this option."
-      },
-      "empty-lines.emptyLinesBehindCode": {
-        "type": "number",
-        "default": 2,
-        "description": "Number of empty lines to be added at the end of a file. Values < 0 disable this option."
-      },
-      "empty-lines.preserveFocusedLines": {
-        "type": "string",
-        "enum": [
-          "None",
-          "Empty",
-          "Block"
-        ],
-        "default": "Block",
-        "description": "Options for preserving focused lines: None, Empty lines, or the entire code block."
-      },
-      "empty-lines.alwaysRelyOnBracketMethodToRead": {
-        "type": "boolean",
-        "default": "false",
-        "description": "Attempt to read over 'unknown' languages' code blocks by looking at curly brackets. Does not work with languages that don't use curly brackets."
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.format",
+        "title": "Empty lines extension"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Empty Lines Configuration",
+      "properties": {
+        "empty-lines.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable the extension."
+        },
+        "empty-lines.emptyLinesBetweenCode": {
+          "type": "number",
+          "default": 1,
+          "description": "Number of empty lines to be added in between code. Values < 0 disable this option."
+        },
+        "empty-lines.emptyLinesBehindCode": {
+          "type": "number",
+          "default": 2,
+          "description": "Number of empty lines to be added at the end of a file. Values < 0 disable this option."
+        },
+        "empty-lines.preserveFocusedLines": {
+          "type": "string",
+          "enum": [
+            "None",
+            "Empty",
+            "Block"
+          ],
+          "default": "Block",
+          "description": "Options for preserving focused lines: None, Empty lines, or the entire code block."
+        },
+        "empty-lines.alwaysRelyOnBracketMethodToRead": {
+          "type": "boolean",
+          "default": "false",
+          "description": "Attempt to read over 'unknown' languages' code blocks by looking at curly brackets. Does not work with languages that don't use curly brackets."
+        }
       }
     }
   },
@@ -92,3 +144,4 @@
     "minimist": "^1.2.8"
   }
 }
+
